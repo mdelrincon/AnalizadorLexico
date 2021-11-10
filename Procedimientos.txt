@@ -1,0 +1,240 @@
+PROC S()
+If st ϵ {do id if input print return var while} Then
+{   A
+    S
+}Else If st ϵ {function} Then
+{   F
+    S
+}Else If st ϵ {$} Then   //Follow de S
+{ }
+End S
+
+PROC A()
+If st ϵ {while} Then
+{  EqT(while)
+   Eqt( ( )
+   E
+   EqT( ) )
+   EqT( { )
+   Z
+   EqT( } )
+}Else If st ϵ {var} Then
+{  EqT(var)
+   V
+   EqT(id)
+   EqT( ; )
+}Else If st ϵ {do} Then
+{  D
+}Else If st ϵ {if} Then
+{  EqT(if)
+   EqT( ( )
+   E
+   EqT( ) )
+   P
+}Else If st ϵ {input} Then
+{  EqT(input)
+   EqT( ( )
+   EqT( id ) 
+   EqT( ) )
+   EqT( ; )
+}Else If st ϵ {id print return} Then
+{  P 
+}
+End A
+
+PROC D()
+If st ϵ {do} Then
+{  EqT(do)
+   EqT( { ) 
+   Z
+   EqT( } )
+   EqT(while)
+   EqT( ( )
+   E 
+   EqT( ) )
+   EqT( ; )
+}
+End D
+
+PROC V()
+If st ϵ {int} Then
+{  EqT(int)
+}Else If st ϵ {string} Then
+{  EqT(string)
+}Else If st ϵ {boolean} Then
+{  EqT(boolean)
+}
+End V
+
+PROC P()
+If st ϵ {id} Then
+{  EqT(id)
+   Pb
+}Else If st ϵ {return} Then
+{  EqT(return)
+   M
+   EqT( ; )
+}Else If st ϵ {print} Then
+{  EqT(print)
+   EqT( ( )
+   E
+   EqT( ) )
+   EqT( ; )
+}
+End P
+
+PROC Pb()
+If st ϵ { = } Then
+{  EqT( = )
+   E
+   EqT( ; )
+}Else If st ϵ { < } Then
+{  EqT( < )
+   E
+   EqT( ; )
+}Else If st ϵ { ( } Then
+{  EqT ( ( )
+   B
+   EqT( ) )
+   EqT( ; )
+}Else If st ϵ {--} Then
+{  EqT(--)
+   EqT(;)
+}
+End Pb
+
+PROC M()
+If st ϵ { ( cadena entero id} Then
+{  E
+}Else If st ϵ { ; } //Follow(M)
+{ }
+End M
+
+PROC Z()
+If st ϵ {do id if input print return var while} Then
+{  A
+   Z
+}Else If st ϵ { } } Then   //Follow(Z) 
+{ }
+End Z
+
+PROC F()
+If st ϵ {function} Then
+{  EqT(function)
+   Fp
+   EqT(id)
+   EqT( ( )
+   T
+   EqT( ) )
+   EqT( { ) 
+   Z
+   EqT( } )
+}
+End F
+
+PROC Fp()
+If st ϵ {boolean int string} Then
+{  V
+}Else If st ϵ {id} Then  //Follow(Fp)
+{ }
+End Fp
+
+PROC T()
+If st ϵ {boolean int string} Then
+{  V
+   EqT(id)
+   G
+}Else If st ϵ { ) } Then   //Follow(T)
+{ }
+End T
+
+PROC G()
+If st ϵ { , } Then
+{  EqT( , )
+   V
+   EqT(id)
+   G
+}Else If st ϵ { ) } Then   //Follow(G)
+{ }
+End G
+
+PROC B()
+If st ϵ { ( cadena entero id} Then
+{  E
+   W
+}Else If st ϵ { ) } Then  //Follow(B)
+{ }
+End B
+
+PROC W()
+If st ϵ { , } Then
+{  EqT( , )
+   E
+   W
+}Else If st ϵ { ) } Then   //Follow(W)
+{ }
+End W
+
+PROC E()
+If st ϵ { ( cadena entero id} Then
+{  C
+   Eb
+}
+End E
+
+PROC Eb()
+If st ϵ {=} Then
+{  EqT(=)
+   E
+}Else If st ϵ { < } Then
+{  EqT(<)
+   E
+}Else If st ϵ { ) , ;} Then
+{ }
+End Eb
+
+PROC C()
+If st ϵ { ( cadena entero id } Then
+{  R
+   Cb
+}
+End C
+
+PROC Cb()
+If st ϵ { + } Then
+{  EqT(+)
+   C
+}Else If st ϵ { ) , ; < = } Then  //Follow(Cb)
+{ }
+End Cb
+
+PROC R()
+If st ϵ {id} Then
+{  EqT(id)
+   Ra
+}Else If st ϵ {entero} Then 
+{  EqT(entero)
+}Else If st ϵ {cadena} Then
+{  EqT(cadena)
+}Else If st ϵ { ( } Then
+{  EqT( ( )
+   E
+   EqT( ) )
+}
+End R
+
+PROC Ra()
+If st ϵ { --} Then
+{  EqT(--)
+   EqT(;)
+}Else If st ϵ { ( } Then
+{  EqT( ( )
+   B
+   EqT( ) )
+}Else if st ϵ { ) + , ; < = } Then   //Follow(Ra)
+{ }
+End Ra
+
+
+
+    

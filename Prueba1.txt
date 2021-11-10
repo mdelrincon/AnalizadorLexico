@@ -1,0 +1,13 @@
+var int c; 
+c = 100; 
+function int b (){ 
+	var int c; 
+	var string s; 
+	s = '$en una funcion$'; 
+	// este comentario no deberia salir 
+	c = 3;
+	c--; 
+	if (true) 
+		n = 4 + c; 
+	return c;
+} 

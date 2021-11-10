@@ -1,0 +1,3 @@
+
+if true=true
+	b = 'dentro true 2';

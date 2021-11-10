@@ -1,0 +1,11 @@
+var string a;
+var int po;
+var int lla;
+po=2;
+lla=3;
+//distintos tipos de if's
+if (po<lla) a = 'dentro true 1';
+if (lla<po) a = 'dentro false 1';
+var string b; 
+if (po<po) b = 'dentro true 2';
+if (lla<lla ) b = 'dentro false 2';
